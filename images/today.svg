@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#1A1614"/>
+  <rect x="30" y="30" width="740" height="940" fill="none" stroke="#E5BA73" stroke-width="2" stroke-dasharray="10,10" opacity="0.6"/>
+  <circle cx="400" cy="380" r="110" fill="none" stroke="#E5BA73" stroke-width="3" opacity="0.4"/>
+  <path d="M340,380 Q400,320 460,380 Q400,440 340,380 Z" fill="#E5BA73" opacity="0.25"/>
+  <circle cx="400" cy="380" r="18" fill="#E5BA73" opacity="0.9"/>
+  <text x="400" y="570" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#E5BA73" text-anchor="middle" letter-spacing="3">CHAPTER 13: TODAY</text>
+  <text x="400" y="620" font-family="sans-serif" font-size="18" fill="#E0E0E0" text-anchor="middle" opacity="0.85">Mummy Today</text>
+  <rect x="200" y="690" width="400" height="90" rx="8" fill="#E5BA73" opacity="0.15" stroke="#E5BA73" stroke-width="1"/>
+  <text x="400" y="730" font-family="sans-serif" font-size="15" font-weight="bold" fill="#E5BA73" text-anchor="middle">📷 PHOTO PLACEHOLDER</text>
+  <text x="400" y="755" font-family="monospace" font-size="13" fill="#CCCCCC" text-anchor="middle">Save image as: images/today.jpg</text>
+</svg>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Journey — Before She Became My Mummy</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+    <!-- Background Particle Canvas (Dust / Petals / Birds / Particles) -->
+    <canvas id="ambientCanvas"></canvas>
+
+    <!-- Music Control Button -->
+    <div class="audio-control-wrapper">
+        <button id="audioToggle" class="audio-btn" aria-label="Toggle Audio">
+            <span class="music-icon">🎵</span>
+            <span class="music-text">Ambient Music</span>
+            <span class="sound-wave">
+                <span></span><span></span><span></span>
+            </span>
+        </button>
+    </div>
+
+    <!-- Live Photo Customizer Button -->
+    <div class="customizer-trigger-wrapper">
+        <button id="openCustomizerBtn" class="customizer-btn">
+            <span>📷 Live Photo Swapper</span>
+        </button>
+    </div>
+
+    <!-- Photo Customizer Modal -->
+    <div id="customizerModal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Live Photo Customizer</h3>
+                <button id="closeCustomizerBtn" class="modal-close">&times;</button>
+            </div>
+            <p class="modal-sub">
+                Select your photos below to instantly preview them on Mummy's journey! <br>
+                <em>To save permanently, copy your photos into the <code>images/</code> folder using the filenames shown.</em>
+            </p>
+            <div class="customizer-list">
+                <div class="customizer-item">
+                    <span>1. Birth: <code>images/birth.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-birth">
+                </div>
+                <div class="customizer-item">
+                    <span>2. Age 3 Mother: <code>images/mother.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-mother">
+                </div>
+                <div class="customizer-item">
+                    <span>3. Third Standard Appa: <code>images/father.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-father">
+                </div>
+                <div class="customizer-item">
+                    <span>4. Jaya Perima: <code>images/jaya-perima.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-jaya-perima">
+                </div>
+                <div class="customizer-item">
+                    <span>5. Thaayagam: <code>images/thaayagam.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-thaayagam">
+                </div>
+                <div class="customizer-item">
+                    <span>6. College: <code>images/college.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-college">
+                </div>
+                <div class="customizer-item">
+                    <span>7. Marriage: <code>images/marriage.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-marriage">
+                </div>
+                <div class="customizer-item">
+                    <span>8. Sirumangalam First Job: <code>images/first-job.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-first-job">
+                </div>
+                <div class="customizer-item">
+                    <span>9. 1999 Anna: <code>images/anna-1999.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-anna-1999">
+                </div>
+                <div class="customizer-item">
+                    <span>10. 2007 Me: <code>images/me-2007.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-me-2007">
+                </div>
+                <div class="customizer-item">
+                    <span>11. Family 1 (Little moments): <code>images/family1.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-family1">
+                </div>
+                <div class="customizer-item">
+                    <span>12. Family 2 (Our home): <code>images/family2.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-family2">
+                </div>
+                <div class="customizer-item">
+                    <span>13. Family 3 (Ordinary days): <code>images/family3.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-family3">
+                </div>
+                <div class="customizer-item">
+                    <span>14. Family 4 (Her smile): <code>images/family4.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-family4">
+                </div>
+                <div class="customizer-item">
+                    <span>15. 2016 Chapter: <code>images/2016.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-2016">
+                </div>
+                <div class="customizer-item">
+                    <span>16. Children Standing Beside Her: <code>images/children.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-children">
+                </div>
+                <div class="customizer-item">
+                    <span>17. Mummy Today: <code>images/today.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-today">
+                </div>
+                <div class="customizer-item">
+                    <span>18. Final Birthday Photo: <code>images/final.jpg</code></span>
+                    <input type="file" accept="image/*" data-target="img-final">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPENING CINEMATIC EXPERIENCE OVERLAY -->
+    <section id="openingExperience" class="opening-screen">
+        <div class="opening-content">
+            <div id="glowingDot" class="glowing-dot"></div>
+            
+            <div class="intro-sequence">
+                <p class="intro-text text-step-1">Every life has a story.</p>
+                <p class="intro-text text-step-2">But some stories deserve to be remembered.</p>
+                <p class="intro-text text-step-3">Before she became my Mummy...</p>
+                <p class="intro-text text-step-4">...she was a little girl with a story of her own.</p>
+            </div>
+
+            <div id="titleReveal" class="title-reveal hidden">
+                <h1 class="main-title">HER JOURNEY</h1>
+                <p class="main-subtitle">Before she became my Mummy,<br>she was a little girl with a story.</p>
+                <button id="beginBtn" class="begin-btn">
+                    <span>BEGIN HER JOURNEY &rarr;</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WINDING ZIG-ZAG JOURNEY PATH SVG (BACKGROUND NAVIGATION ROAD) -->
+    <div class="path-container" id="pathContainer">
+        <svg id="journeyPathSvg" viewBox="0 0 1000 7800" preserveAspectRatio="none">
+            <!-- Background Winding Zig-Zag Path (Left -> Right -> Left -> Right -> Left...) -->
+            <path id="journeyCurveBack" d="
+                M 250,100 
+                C 800,400 800,700 250,1000 
+                C -100,1300 -100,1600 750,1900 
+                C 1100,2200 1100,2500 250,2800 
+                C -100,3100 -100,3400 750,3700 
+                C 1100,4000 1100,4300 250,4600 
+                C -100,4900 -100,5200 750,5500 
+                C 1100,5800 1100,6100 500,6400
+                C 500,6700 500,7000 500,7600" 
+                fill="none" stroke="rgba(212, 175, 55, 0.25)" stroke-width="4" stroke-dasharray="12 12" />
+            
+            <!-- Active Golden Progress Path -->
+            <path id="journeyCurveProgress" d="
+                M 250,100 
+                C 800,400 800,700 250,1000 
+                C -100,1300 -100,1600 750,1900 
+                C 1100,2200 1100,2500 250,2800 
+                C -100,3100 -100,3400 750,3700 
+                C 1100,4000 1100,4300 250,4600 
+                C -100,4900 -100,5200 750,5500 
+                C 1100,5800 1100,6100 500,6400
+                C 500,6700 500,7000 500,7600" 
+                fill="none" stroke="url(#goldGradient)" stroke-width="6" stroke-linecap="round" />
+            
+            <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.9"/>
+                    <stop offset="50%" stop-color="#E5BA73" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#F3E5AB" stop-opacity="0.95"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- STICKY CHECKPOINT ROADMAP -->
+    <nav id="checkpointNav" class="checkpoint-nav">
+        <div class="nav-title">ROAD MAP</div>
+        <ul class="checkpoint-list">
+            <li class="nav-item active" data-target="ch-birth"><span class="dot"></span><span class="label">Beginning</span></li>
+            <li class="nav-item" data-target="ch-mother"><span class="dot"></span><span class="label">First Loss</span></li>
+            <li class="nav-item" data-target="ch-father"><span class="dot"></span><span class="label">Second Loss</span></li>
+            <li class="nav-item" data-target="ch-jaya"><span class="dot"></span><span class="label">Jaya Perima</span></li>
+            <li class="nav-item" data-target="ch-thaayagam"><span class="dot"></span><span class="label">Thaayagam</span></li>
+            <li class="nav-item" data-target="ch-college"><span class="dot"></span><span class="label">College</span></li>
+            <li class="nav-item" data-target="ch-marriage"><span class="dot"></span><span class="label">Marriage</span></li>
+            <li class="nav-item" data-target="ch-job"><span class="dot"></span><span class="label">First Job</span></li>
+            <li class="nav-item" data-target="ch-1999"><span class="dot"></span><span class="label">1999</span></li>
+            <li class="nav-item" data-target="ch-2007"><span class="dot"></span><span class="label">2007</span></li>
+            <li class="nav-item" data-target="ch-family"><span class="dot"></span><span class="label">Our Family</span></li>
+            <li class="nav-item" data-target="ch-2016"><span class="dot"></span><span class="label">2016</span></li>
+            <li class="nav-item" data-target="ch-turning"><span class="dot"></span><span class="label">Turning Point</span></li>
+            <li class="nav-item" data-target="ch-today"><span class="dot"></span><span class="label">Today</span></li>
+            <li class="nav-item" data-target="ch-tomorrow"><span class="dot"></span><span class="label">Tomorrow</span></li>
+            <li class="nav-item" data-target="ch-reveal"><span class="dot"></span><span class="label">Birthday</span></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN STORY CONTAINER -->
+    <main id="mainContent" class="main-container">
+
+        <!-- CHAPTER 1: BIRTH -->
+        <section id="ch-birth" class="chapter-section pos-left mood-birth" data-checkpoint="THE BEGINNING">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 01</div>
+            <h2 class="chapter-title">THE BEGINNING</h2>
+            
+            <div class="story-grid">
+                <div class="photo-frame polaroid">
+                    <img id="img-birth" src="images/birth.jpg" onerror="this.onerror=null; this.src='images/birth.svg';" alt="Birth & Childhood">
+                    <span class="caption">her beginning</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">She was the youngest of three children.</p>
+                    <p class="story-p">Her parents had married later in her father's life.</p>
+                    <p class="story-p">Her beginning itself came with difficulties.</p>
+                    <p class="story-p highlight-text">But somehow, she made it into this world.</p>
+                    <p class="story-p font-serif-quote">"Some stories begin quietly.<br>Hers began by surviving."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 2: AGE 3 (THE FIRST LOSS) -->
+        <section id="ch-mother" class="chapter-section pos-right mood-loss" data-checkpoint="THE FIRST LOSS">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 02</div>
+            <h2 class="chapter-title">THE FIRST LOSS</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid dark-frame">
+                    <img id="img-mother" src="images/mother.jpg" onerror="this.onerror=null; this.src='images/mother.svg';" alt="Her Mother">
+                    <span class="caption">memory of her mother</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">When she was only three, she lost her mother.</p>
+                    <p class="story-p">She was too young to understand what she had lost.</p>
+                    <p class="story-p font-serif-quote">Her father became her world.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 3: THIRD STANDARD (THE SECOND LOSS) -->
+        <section id="ch-father" class="chapter-section pos-left mood-dark-loss" data-checkpoint="THE SECOND LOSS">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 03</div>
+            <h2 class="chapter-title">THE SECOND LOSS</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid dark-frame">
+                    <img id="img-father" src="images/father.jpg" onerror="this.onerror=null; this.src='images/father.svg';" alt="Her Appa">
+                    <span class="caption">her Appa's memory</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">Years passed with her father.</p>
+                    <p class="story-p">She remembers him simply —</p>
+                    <p class="story-p highlight-text">white hair, white dhoti, and the familiar presence of Appa.</p>
+                    <p class="story-p">Then, while she was in third standard, she lost him too.</p>
+                    <p class="story-p font-serif-quote">"But someone was about to change her path."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 4: JAYA PERIMA -->
+        <section id="ch-jaya" class="chapter-section pos-right mood-jaya" data-checkpoint="SOMEONE CHOSE HER FUTURE">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 04</div>
+            <h2 class="chapter-title">SOMEONE CHOSE HER FUTURE</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid">
+                    <img id="img-jaya-perima" src="images/jaya-perima.jpg" onerror="this.onerror=null; this.src='images/jaya-perima.svg';" alt="Jaya Perima">
+                    <span class="caption">Jaya Perima</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">After losing her father, some relatives thought she could be sent away for household work.</p>
+                    <p class="story-p">But Jaya Perima refused.</p>
+                    <p class="story-p highlight-text">She believed she deserved an education.</p>
+                    <p class="story-p">So she took her to Thaayagam.</p>
+                </div>
+            </div>
+
+            <div class="road-change-divider">
+                <div class="road-marker-line"></div>
+                <span class="road-marker-text">THE ROAD CHANGED HERE.</span>
+                <div class="road-marker-line"></div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 5: THAAYAGAM -->
+        <section id="ch-thaayagam" class="chapter-section pos-left mood-thaayagam" data-checkpoint="THAAYAGAM">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 05</div>
+            <h2 class="chapter-title vintage-heading">THAAYAGAM</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame paper-vintage-frame">
+                    <img id="img-thaayagam" src="images/thaayagam.jpg" onerror="this.onerror=null; this.src='images/thaayagam.svg';" alt="Thaayagam Memory">
+                    <span class="caption">Thaayagam days</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">Life at Thaayagam was not easy.</p>
+                    <p class="story-p">Food was limited. Old clothes felt precious.</p>
+                    <p class="story-p">But she studied, learned devotional songs, and found small moments of peace.</p>
+                    <p class="story-p font-serif-quote">"She learned to live with less, without letting her dreams become less."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 6: COLLEGE -->
+        <section id="ch-college" class="chapter-section pos-right mood-college" data-checkpoint="THE GIRL WHO GREW">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 06</div>
+            <h2 class="chapter-title">THE GIRL WHO GREW</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid">
+                    <img id="img-college" src="images/college.jpg" onerror="this.onerror=null; this.src='images/college.svg';" alt="College Days">
+                    <span class="caption">young Amma</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">She grew up.</p>
+                    <p class="story-p">She joined college, studied, made friends, and finally experienced a little normal happiness.</p>
+                    <p class="story-p font-serif-quote">"But life had another chapter waiting."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 7: MARRIAGE -->
+        <section id="ch-marriage" class="chapter-section pos-left mood-marriage" data-checkpoint="A CHAPTER SHE DIDN'T CHOOSE">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 07</div>
+            <h2 class="chapter-title">A CHAPTER SHE DIDN'T CHOOSE</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid">
+                    <img id="img-marriage" src="images/marriage.jpg" onerror="this.onerror=null; this.src='images/marriage.svg';" alt="Marriage Day">
+                    <span class="caption">marriage day</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">She and Appa had a 16-year age difference.</p>
+                    <p class="story-p">The marriage happened because of circumstances, not because it was the life she had imagined.</p>
+                    <p class="story-p">The beginning was difficult, with frequent fights and painful moments.</p>
+                    <p class="story-p font-serif-quote">"A new chapter was waiting for her."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 8: FIRST JOB -->
+        <section id="ch-job" class="chapter-section pos-right mood-first-job" data-checkpoint="THE TURNING POINT">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 08</div>
+            <h2 class="chapter-title">THE TURNING POINT</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid warm-glow">
+                    <img id="img-first-job" src="images/first-job.jpg" onerror="this.onerror=null; this.src='images/first-job.svg';" alt="First Job Workplace">
+                    <span class="caption">Sirumangalam Government Job</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">At one point, someone questioned how the marriage could work without a job.</p>
+                    <p class="story-p highlight-text">Within the very next month, she got a government job.</p>
+                    <p class="story-p font-serif-quote">Her first posting was at Sirumangalam.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 9: 1999 -->
+        <section id="ch-1999" class="chapter-section pos-left mood-1999" data-checkpoint="1999">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="year-header">1999</div>
+            <h2 class="chapter-title">She Became a Mother</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid warm-glow">
+                    <img id="img-anna-1999" src="images/anna-1999.jpg" onerror="this.onerror=null; this.src='images/anna-1999.svg';" alt="Anna as a Baby">
+                    <span class="caption">Anna (1999)</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">Then, she became a mother.</p>
+                    <p class="story-p">Her first son was born.</p>
+                    <p class="story-p font-serif-quote">A new responsibility. A new reason to keep going.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 10: 2007 -->
+        <section id="ch-2007" class="chapter-section pos-right mood-2007" data-checkpoint="2007">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="year-header">2007</div>
+            <h2 class="chapter-title">I Arrived</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid warm-glow">
+                    <img id="img-me-2007" src="images/me-2007.jpg" onerror="this.onerror=null; this.src='images/me-2007.svg';" alt="Baby Me & Mummy">
+                    <span class="caption">Me (2007)</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">Eight years later, I arrived.</p>
+                    <p class="story-p">Our little family was complete.</p>
+                    <p class="story-p">Life was simple — small fights, small happiness, and countless ordinary memories.</p>
+                    <p class="story-p font-serif-quote">"Nothing extraordinary. Yet everything meant everything."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 11: OUR FAMILY (WOODEN TABLE MEMORY SCENE) -->
+        <section id="ch-family" class="chapter-section pos-center mood-family-table" data-checkpoint="THE LIFE SHE BUILT">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 11</div>
+            <h2 class="chapter-title">THE LIFE SHE BUILT</h2>
+            <p class="chapter-subtitle">Memories lying on a table in sunlight</p>
+
+            <div class="wooden-table-gallery">
+                <div class="table-photo item-1">
+                    <div class="photo-frame polaroid">
+                        <img id="img-family1" src="images/family1.jpg" onerror="this.onerror=null; this.src='images/family1.svg';" alt="Little moments">
+                        <span class="caption">little moments</span>
+                    </div>
+                </div>
+
+                <div class="table-photo item-2">
+                    <div class="photo-frame polaroid">
+                        <img id="img-family2" src="images/family2.jpg" onerror="this.onerror=null; this.src='images/family2.svg';" alt="Our home">
+                        <span class="caption">our home</span>
+                    </div>
+                </div>
+
+                <div class="table-photo item-3">
+                    <div class="photo-frame polaroid">
+                        <img id="img-family3" src="images/family3.jpg" onerror="this.onerror=null; this.src='images/family3.svg';" alt="Ordinary days">
+                        <span class="caption">ordinary days</span>
+                    </div>
+                </div>
+
+                <div class="table-photo item-4">
+                    <div class="photo-frame polaroid">
+                        <img id="img-family4" src="images/family4.jpg" onerror="this.onerror=null; this.src='images/family4.svg';" alt="Her smile">
+                        <span class="caption">her smile</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 12: 2016 -->
+        <section id="ch-2016" class="chapter-section pos-left mood-2016" data-checkpoint="2016">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="year-header dark-header">2016</div>
+            <h2 class="chapter-title">A Difficult Chapter</h2>
+
+            <div class="story-grid">
+                <div class="photo-frame polaroid dark-frame">
+                    <img id="img-2016" src="images/2016.jpg" onerror="this.onerror=null; this.src='images/2016.svg';" alt="2016 Memory">
+                    <span class="caption">worry & fear</span>
+                </div>
+                <div class="story-content">
+                    <p class="story-p">My brother faced health problems.</p>
+                    <p class="story-p">Once again, Mummy became deeply worried.</p>
+                    <p class="story-p">The person who had always taken care of everyone was suddenly struggling herself.</p>
+                    <p class="story-p">Our whole family was worried.</p>
+                </div>
+            </div>
+
+            <div class="dramatic-fade-to-black">
+                <p class="fade-text">But her story does not end here.</p>
+            </div>
+        </section>
+
+        <!-- THE TURNING POINT -->
+        <section id="ch-turning" class="chapter-section pos-center mood-pitch-black" data-checkpoint="THE TURNING POINT">
+            <div class="turning-point-content">
+                <div class="step-text t-step-1">She carried everyone.</div>
+                <div class="step-text t-step-2">Her family.</div>
+                <div class="step-text t-step-3">Her children.</div>
+                <div class="step-text t-step-4">Her responsibilities.</div>
+                
+                <div class="turning-pivot">
+                    <div class="step-text t-step-5">And now...</div>
+                    <div class="step-text t-step-6 highlight-gold">it's our turn.</div>
+                </div>
+
+                <div class="children-stand-block hidden" id="childrenStandBlock">
+                    <div class="photo-frame polaroid warm-glow center-frame">
+                        <img id="img-children" src="images/children.jpg" onerror="this.onerror=null; this.src='images/children.svg';" alt="Children Standing Beside Her">
+                        <span class="caption">beside her always</span>
+                    </div>
+                    <p class="children-quote">"The children she spent her life worrying about are here to stand beside her."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 13: TODAY -->
+        <section id="ch-today" class="chapter-section pos-right mood-today" data-checkpoint="TODAY">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">CHAPTER 13</div>
+            <h2 class="chapter-title">TODAY</h2>
+
+            <div class="story-grid hero-today-grid">
+                <div class="photo-frame polaroid golden-border">
+                    <img id="img-today" src="images/today.jpg" onerror="this.onerror=null; this.src='images/today.svg';" alt="Mummy Today">
+                    <span class="caption">Mummy today</span>
+                </div>
+                <div class="story-content letter-format">
+                    <p class="letter-salutation">Mummy,</p>
+                    <p class="story-p">You have already been strong for longer than anyone knows.</p>
+                    <p class="story-p">You don't have to carry everything alone anymore.</p>
+                    <p class="story-p font-serif-quote">You have us.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CHAPTER: HER TOMORROW -->
+        <section id="ch-tomorrow" class="chapter-section pos-center mood-tomorrow" data-checkpoint="HER TOMORROW">
+            <div class="checkpoint-glowing-node"></div>
+            <div class="chapter-badge">FINAL CHAPTER</div>
+            <h2 class="chapter-title sunrise-heading">HER TOMORROW</h2>
+
+            <div class="tomorrow-content">
+                <p class="story-p">You spent so many years making sure we were okay.</p>
+                <p class="story-p">Now it's our turn to walk beside you.</p>
+                <p class="story-p highlight-gold-lg">Whatever comes next, we'll face it together.</p>
+                
+                <div class="future-text-block">
+                    <p class="future-line">Your story is not ending here.</p>
+                    <p class="future-line-highlight">This is only the beginning.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL BIRTHDAY REVEAL -->
+        <section id="ch-reveal" class="chapter-section final-reveal-section" data-checkpoint="HAPPY BIRTHDAY">
+            <div class="hero-photo-wrapper">
+                <img id="img-final" class="cinematic-zoom-img" src="images/final.jpg" onerror="this.onerror=null; this.src='images/final.svg';" alt="Happy Birthday Mummy">
+                <div class="overlay-gradient"></div>
+            </div>
+
+            <div class="reveal-content-box">
+                <div class="reveal-poem">
+                    <p>Before you were our Mummy,</p>
+                    <p>you were a little girl who survived so much.</p>
+                    <p class="poem-spacer">You grew.</p>
+                    <p>You kept going.</p>
+                    <p>You built a family.</p>
+                    <p>You became our Mummy.</p>
+                </div>
+
+                <div class="final-love-message">
+                    <h1 class="love-title">HAPPY BIRTHDAY, MUMMY ❤️</h1>
+                    <p class="from-children">Thank you for everything.</p>
+                    <p class="final-thankyou">"Your future is still waiting for you.<br>We'll walk with you."</p>
+                </div>
+
+                <button id="restartBtn" class="restart-journey-btn">
+                    <span>Walk through her journey again ↺</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JS Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
