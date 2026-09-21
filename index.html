@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Her Journey — Before She Became My Mummy</title>
+    <title data-i18n="page_title">அவளின் பயணம் — அவங்க எனக்கு மம்மியா ஆகறதுக்கு முன்னாடி</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Sacramento&family=Noto+Sans+Tamil:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="lang-ta">
 
     <!-- Film Grain Overlay -->
     <div class="film-grain"></div>
@@ -21,11 +21,19 @@
     <!-- Background Particle Canvas (Dust / Petals / Birds / Particles) -->
     <canvas id="ambientCanvas"></canvas>
 
+    <!-- Language Control Button -->
+    <div class="lang-control-wrapper">
+        <button id="langToggle" class="lang-btn" aria-label="Toggle Language">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-text" id="langText">English</span>
+        </button>
+    </div>
+
     <!-- Music Control Button -->
     <div class="audio-control-wrapper">
         <button id="audioToggle" class="audio-btn" aria-label="Toggle Audio">
             <span class="music-icon">🎵</span>
-            <span class="music-text">Ambient Music</span>
+            <span class="music-text" data-i18n="audio_ambient">பின்னணி இசை</span>
             <span class="sound-wave">
                 <span></span><span></span><span></span>
             </span>
@@ -35,7 +43,7 @@
     <!-- Live Photo Customizer Button -->
     <div class="customizer-trigger-wrapper">
         <button id="openCustomizerBtn" class="customizer-btn">
-            <span>📷 Live Photo Swapper</span>
+            <span data-i18n="customizer_btn">📷 புகைப்பட மாற்றி</span>
         </button>
     </div>
 
@@ -43,84 +51,84 @@
     <div id="customizerModal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>Live Photo Customizer</h3>
+                <h3 data-i18n="modal_title">புகைப்பட மாற்றி</h3>
                 <button id="closeCustomizerBtn" class="modal-close">&times;</button>
             </div>
-            <p class="modal-sub">
-                Select your photos below to instantly preview them on Mummy's journey! <br>
-                <em>To save permanently, copy your photos into the <code>images/</code> folder using the filenames shown.</em>
+            <p class="modal-sub" data-i18n="modal_sub">
+                மம்மியின் பயணத்தில் உங்கள் புகைப்படங்களை உடனுக்குடன் பார்க்க கீழே தேர்ந்தெடுக்கவும்! <br>
+                <em>நிரந்தரமாக சேமிக்க, காட்டப்பட்டுள்ள கோப்புப் பெயர்களுடன் உங்கள் புகைப்படங்களை <code>images/</code> கோப்புறையில் நகலெடுக்கவும்.</em>
             </p>
             <div class="customizer-list">
                 <div class="customizer-item">
-                    <span>1. Birth: <code>images/birth.jpg</code></span>
+                    <span data-i18n="modal_item_1">1. பிறப்பு: <code>images/birth.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-birth">
                 </div>
                 <div class="customizer-item">
-                    <span>2. Age 3 Mother: <code>images/mother.jpg</code></span>
+                    <span data-i18n="modal_item_2">2. 3 வயதில் தாய் இழப்பு: <code>images/mother.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-mother">
                 </div>
                 <div class="customizer-item">
-                    <span>3. Third Standard Appa: <code>images/father.jpg</code></span>
+                    <span data-i18n="modal_item_3">3. 3-ஆம் வகுப்பில் அப்பா இழப்பு: <code>images/father.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-father">
                 </div>
                 <div class="customizer-item">
-                    <span>4. Jaya Perima: <code>images/jaya-perima.jpg</code></span>
+                    <span data-i18n="modal_item_4">4. ஜெயா பெரிம்மா: <code>images/jaya-perima.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-jaya-perima">
                 </div>
                 <div class="customizer-item">
-                    <span>5. Thaayagam: <code>images/thaayagam.jpg</code></span>
+                    <span data-i18n="modal_item_5">5. தாயகம்: <code>images/thaayagam.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-thaayagam">
                 </div>
                 <div class="customizer-item">
-                    <span>6. College: <code>images/college.jpg</code></span>
+                    <span data-i18n="modal_item_6">6. கல்லூரி: <code>images/college.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-college">
                 </div>
                 <div class="customizer-item">
-                    <span>7. Marriage: <code>images/marriage.jpg</code></span>
+                    <span data-i18n="modal_item_7">7. திருமணம்: <code>images/marriage.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-marriage">
                 </div>
                 <div class="customizer-item">
-                    <span>8. Sirumangalam First Job: <code>images/first-job.jpg</code></span>
+                    <span data-i18n="modal_item_8">8. சிறுமங்கலம் முதல் வேலை: <code>images/first-job.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-first-job">
                 </div>
                 <div class="customizer-item">
-                    <span>9. 1999 Anna: <code>images/anna-1999.jpg</code></span>
+                    <span data-i18n="modal_item_9">9. 1999 அண்ணா: <code>images/anna-1999.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-anna-1999">
                 </div>
                 <div class="customizer-item">
-                    <span>10. 2007 Me: <code>images/me-2007.jpg</code></span>
+                    <span data-i18n="modal_item_10">10. 2007 நான்: <code>images/me-2007.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-me-2007">
                 </div>
                 <div class="customizer-item">
-                    <span>11. Family 1 (Little moments): <code>images/family1.jpg</code></span>
+                    <span data-i18n="modal_item_11">11. குடும்பம் 1 (சின்ன சின்ன தருணங்கள்): <code>images/family1.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-family1">
                 </div>
                 <div class="customizer-item">
-                    <span>12. Family 2 (Our home): <code>images/family2.jpg</code></span>
+                    <span data-i18n="modal_item_12">12. குடும்பம் 2 (எங்கள் இல்லம்): <code>images/family2.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-family2">
                 </div>
                 <div class="customizer-item">
-                    <span>13. Family 3 (Ordinary days): <code>images/family3.jpg</code></span>
+                    <span data-i18n="modal_item_13">13. குடும்பம் 3 (சாதாரண நாட்கள்): <code>images/family3.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-family3">
                 </div>
                 <div class="customizer-item">
-                    <span>14. Family 4 (Her smile): <code>images/family4.jpg</code></span>
+                    <span data-i18n="modal_item_14">14. குடும்பம் 4 (அவளின் புன்னகை): <code>images/family4.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-family4">
                 </div>
                 <div class="customizer-item">
-                    <span>15. 2016 Chapter: <code>images/2016.jpg</code></span>
+                    <span data-i18n="modal_item_15">15. 2016 அத்தியாயம்: <code>images/2016.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-2016">
                 </div>
                 <div class="customizer-item">
-                    <span>16. Children Standing Beside Her: <code>images/children.jpg</code></span>
+                    <span data-i18n="modal_item_16">16. அவளுடன் நிற்கும் பிள்ளைகள்: <code>images/children.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-children">
                 </div>
                 <div class="customizer-item">
-                    <span>17. Mummy Today: <code>images/today.jpg</code></span>
+                    <span data-i18n="modal_item_17">17. மம்மி இன்று: <code>images/today.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-today">
                 </div>
                 <div class="customizer-item">
-                    <span>18. Final Birthday Photo: <code>images/final.jpg</code></span>
+                    <span data-i18n="modal_item_18">18. பிறந்தநாள் புகைப்படம்: <code>images/final.jpg</code></span>
                     <input type="file" accept="image/*" data-target="img-final">
                 </div>
             </div>
@@ -133,17 +141,17 @@
             <div id="glowingDot" class="glowing-dot"></div>
             
             <div class="intro-sequence">
-                <p class="intro-text text-step-1">Every life has a story.</p>
-                <p class="intro-text text-step-2">But some stories deserve to be remembered.</p>
-                <p class="intro-text text-step-3">Before she became my Mummy...</p>
-                <p class="intro-text text-step-4">...she was a little girl with a story of her own.</p>
+                <p class="intro-text text-step-1" data-i18n="intro_1">ஒவ்வொரு வாழ்க்கையிலும் ஒரு கதை இருக்கு.</p>
+                <p class="intro-text text-step-2" data-i18n="intro_2">ஆனா சில கதைகளை நாம என்னைக்குமே மறக்கக் கூடாது.</p>
+                <p class="intro-text text-step-3" data-i18n="intro_3">அவங்க எனக்கு மம்மியா ஆகறதுக்கு முன்னாடி...</p>
+                <p class="intro-text text-step-4" data-i18n="intro_4">...அவங்களும் ஒரு சின்னப் பொண்ணா சொந்தக் கதையோட தான் இருந்தாங்க.</p>
             </div>
 
             <div id="titleReveal" class="title-reveal hidden">
-                <h1 class="main-title">HER JOURNEY</h1>
-                <p class="main-subtitle">Before she became my Mummy,<br>she was a little girl with a story.</p>
+                <h1 class="main-title" data-i18n="main_title">அவளின் பயணம்</h1>
+                <p class="main-subtitle" data-i18n="main_subtitle">அவங்க எனக்கு மம்மியா ஆகறதுக்கு முன்னாடி,<br>ஒரு சின்னப் பொண்ணா சொந்தக் கதையோட இருந்தாங்க.</p>
                 <button id="beginBtn" class="begin-btn">
-                    <span>BEGIN HER JOURNEY &rarr;</span>
+                    <span data-i18n="begin_btn">அவளின் பயணத்தை தொடங்குங்கள் &rarr;</span>
                 </button>
             </div>
         </div>
@@ -190,24 +198,24 @@
 
     <!-- STICKY CHECKPOINT ROADMAP -->
     <nav id="checkpointNav" class="checkpoint-nav">
-        <div class="nav-title">ROAD MAP</div>
+        <div class="nav-title" data-i18n="nav_title">பயணப் பாதை</div>
         <ul class="checkpoint-list">
-            <li class="nav-item active" data-target="ch-birth"><span class="dot"></span><span class="label">Beginning</span></li>
-            <li class="nav-item" data-target="ch-mother"><span class="dot"></span><span class="label">First Loss</span></li>
-            <li class="nav-item" data-target="ch-father"><span class="dot"></span><span class="label">Second Loss</span></li>
-            <li class="nav-item" data-target="ch-jaya"><span class="dot"></span><span class="label">Jaya Perima</span></li>
-            <li class="nav-item" data-target="ch-thaayagam"><span class="dot"></span><span class="label">Thaayagam</span></li>
-            <li class="nav-item" data-target="ch-college"><span class="dot"></span><span class="label">College</span></li>
-            <li class="nav-item" data-target="ch-marriage"><span class="dot"></span><span class="label">Marriage</span></li>
-            <li class="nav-item" data-target="ch-job"><span class="dot"></span><span class="label">First Job</span></li>
-            <li class="nav-item" data-target="ch-1999"><span class="dot"></span><span class="label">1999</span></li>
-            <li class="nav-item" data-target="ch-2007"><span class="dot"></span><span class="label">2007</span></li>
-            <li class="nav-item" data-target="ch-family"><span class="dot"></span><span class="label">Our Family</span></li>
-            <li class="nav-item" data-target="ch-2016"><span class="dot"></span><span class="label">2016</span></li>
-            <li class="nav-item" data-target="ch-turning"><span class="dot"></span><span class="label">Turning Point</span></li>
-            <li class="nav-item" data-target="ch-today"><span class="dot"></span><span class="label">Today</span></li>
-            <li class="nav-item" data-target="ch-tomorrow"><span class="dot"></span><span class="label">Tomorrow</span></li>
-            <li class="nav-item" data-target="ch-reveal"><span class="dot"></span><span class="label">Birthday</span></li>
+            <li class="nav-item active" data-target="ch-birth"><span class="dot"></span><span class="label" data-i18n="nav_birth">ஆரம்பம்</span></li>
+            <li class="nav-item" data-target="ch-mother"><span class="dot"></span><span class="label" data-i18n="nav_mother">முதல் இழப்பு</span></li>
+            <li class="nav-item" data-target="ch-father"><span class="dot"></span><span class="label" data-i18n="nav_father">இரண்டாம் இழப்பு</span></li>
+            <li class="nav-item" data-target="ch-jaya"><span class="dot"></span><span class="label" data-i18n="nav_jaya">ஜெயா பெரிம்மா</span></li>
+            <li class="nav-item" data-target="ch-thaayagam"><span class="dot"></span><span class="label" data-i18n="nav_thaayagam">தாயகம்</span></li>
+            <li class="nav-item" data-target="ch-college"><span class="dot"></span><span class="label" data-i18n="nav_college">கல்லூரி</span></li>
+            <li class="nav-item" data-target="ch-marriage"><span class="dot"></span><span class="label" data-i18n="nav_marriage">திருமணம்</span></li>
+            <li class="nav-item" data-target="ch-job"><span class="dot"></span><span class="label" data-i18n="nav_job">முதல் வேலை</span></li>
+            <li class="nav-item" data-target="ch-1999"><span class="dot"></span><span class="label" data-i18n="nav_1999">1999</span></li>
+            <li class="nav-item" data-target="ch-2007"><span class="dot"></span><span class="label" data-i18n="nav_2007">2007</span></li>
+            <li class="nav-item" data-target="ch-family"><span class="dot"></span><span class="label" data-i18n="nav_family">எங்கள் குடும்பம்</span></li>
+            <li class="nav-item" data-target="ch-2016"><span class="dot"></span><span class="label" data-i18n="nav_2016">2016</span></li>
+            <li class="nav-item" data-target="ch-turning"><span class="dot"></span><span class="label" data-i18n="nav_turning">திருப்புமுனை</span></li>
+            <li class="nav-item" data-target="ch-today"><span class="dot"></span><span class="label" data-i18n="nav_today">இன்று</span></li>
+            <li class="nav-item" data-target="ch-tomorrow"><span class="dot"></span><span class="label" data-i18n="nav_tomorrow">நாளை</span></li>
+            <li class="nav-item" data-target="ch-reveal"><span class="dot"></span><span class="label" data-i18n="nav_reveal">பிறந்தநாள்</span></li>
         </ul>
     </nav>
 
@@ -217,20 +225,20 @@
         <!-- CHAPTER 1: BIRTH -->
         <section id="ch-birth" class="chapter-section pos-left mood-birth" data-checkpoint="THE BEGINNING">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 01</div>
-            <h2 class="chapter-title">THE BEGINNING</h2>
+            <div class="chapter-badge" data-i18n="ch1_badge">அத்தியாயம் 01</div>
+            <h2 class="chapter-title" data-i18n="ch1_title">ஆரம்பம்</h2>
             
             <div class="story-grid">
                 <div class="photo-frame polaroid">
-                    <img id="img-birth" src="images/birth.jpg" onerror="this.onerror=null; this.src='images/birth.svg';" alt="Birth & Childhood">
-                    <span class="caption">her beginning</span>
+                    <img id="img-birth" src="images/birth.jpg" onerror="this.onerror=null; this.src='images/birth.svg';" alt="பிறப்பும் சிறுவயதும்" data-i18n-alt="ch1_alt">
+                    <span class="caption" data-i18n="ch1_caption">அவளுடைய ஆரம்பம்</span>
                 </div>
                 <div class="story-content">
-                    <p class="story-p">She was the youngest of three children.</p>
-                    <p class="story-p">Her parents had married later in her father's life.</p>
-                    <p class="story-p">Her beginning itself came with difficulties.</p>
-                    <p class="story-p highlight-text">But somehow, she made it into this world.</p>
-                    <p class="story-p font-serif-quote">"Some stories begin quietly.<br>Hers began by surviving."</p>
+                    <p class="story-p" data-i18n="ch1_p1">மூணு குழந்தைகளில் அவ தான் எல்லாருக்கும் கடைசி.</p>
+                    <p class="story-p" data-i18n="ch1_p2">அவளோட அப்பாவுக்கு கொஞ்சம் வயசான பிறகு தான் திருமணம் ஆச்சு.</p>
+                    <p class="story-p" data-i18n="ch1_p3">அவ பிறந்த போதே பல கஷ்டங்களோட தான் பிறந்தா.</p>
+                    <p class="story-p highlight-text" data-i18n="ch1_p4">ஆனாலும், எப்படி எல்லாமோ தாண்டி இந்த உலகத்துக்குள்ள வந்தா.</p>
+                    <p class="story-p font-serif-quote" data-i18n="ch1_quote">"சில கதைகள் அமைதியா தொடங்கும்.<br>அவளோட கதை ஜெயிக்கிறதுல தான் தொடங்குச்சு."</p>
                 </div>
             </div>
         </section>
@@ -238,47 +246,47 @@
         <!-- CHAPTER 2: AGE 3 (THE FIRST LOSS) -->
         <section id="ch-mother" class="chapter-section pos-right mood-loss" data-checkpoint="THE FIRST LOSS">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 02</div>
-            <h2 class="chapter-title">THE FIRST LOSS</h2>
+            <div class="chapter-badge" data-i18n="ch2_badge">அத்தியாயம் 02</div>
+            <h2 class="chapter-title" data-i18n="ch2_title">முதல் இழப்பு</h2>
 
             <div class="story-content text-only-content">
-                <p class="story-p">When she was only three, she lost her mother.</p>
-                <p class="story-p">She was too young to understand what she had lost.</p>
-                <p class="story-p font-serif-quote">Her father became her world.</p>
+                <p class="story-p" data-i18n="ch2_p1">மூணு வயசு இருக்கும் போது, அவளோட அம்மாவை இழந்துட்டா.</p>
+                <p class="story-p" data-i18n="ch2_p2">என்ன இழந்திருக்கோம்னு புரியாத சின்ன வயசு அவளுக்கு.</p>
+                <p class="story-p font-serif-quote" data-i18n="ch2_quote">அப்போ அவளோட அப்பாவே அவளோட உலகமானார்.</p>
             </div>
         </section>
 
         <!-- CHAPTER 3: THIRD STANDARD (THE SECOND LOSS) -->
         <section id="ch-father" class="chapter-section pos-left mood-dark-loss" data-checkpoint="THE SECOND LOSS">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 03</div>
-            <h2 class="chapter-title">THE SECOND LOSS</h2>
+            <div class="chapter-badge" data-i18n="ch3_badge">அத்தியாயம் 03</div>
+            <h2 class="chapter-title" data-i18n="ch3_title">இரண்டாம் இழப்பு</h2>
 
             <div class="story-content text-only-content">
-                <p class="story-p">Years passed with her father.</p>
-                <p class="story-p">She remembers him simply —</p>
-                <p class="story-p highlight-text">white hair, white dhoti, and the familiar presence of Appa.</p>
-                <p class="story-p">Then, while she was in third standard, she lost him too.</p>
-                <p class="story-p font-serif-quote">"But someone was about to change her path."</p>
+                <p class="story-p" data-i18n="ch3_p1">அப்பாவோட சில வருஷங்கள் கடந்துச்சு.</p>
+                <p class="story-p" data-i18n="ch3_p2">அவளுக்கு அவரை பத்தின நினைவுகள் ரொம்ப எளிமையானது —</p>
+                <p class="story-p highlight-text" data-i18n="ch3_p3">வெள்ளை முடி, வெள்ளை வேட்டி, அப்புறம் அன்பான அப்பாவோட நிழல்.</p>
+                <p class="story-p" data-i18n="ch3_p4">அவ மூணாவது படிக்கும் போது, அந்த அப்பாவையும் இழந்துட்டா.</p>
+                <p class="story-p font-serif-quote" data-i18n="ch3_quote">"ஆனா அவளோட பாதையை மாற்ற ஒருத்தர் வரப்போறாங்க."</p>
             </div>
         </section>
 
         <!-- CHAPTER 4: JAYA PERIMA -->
         <section id="ch-jaya" class="chapter-section pos-right mood-jaya" data-checkpoint="SOMEONE CHOSE HER FUTURE">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 04</div>
-            <h2 class="chapter-title">SOMEONE CHOSE HER FUTURE</h2>
+            <div class="chapter-badge" data-i18n="ch4_badge">அத்தியாயம் 04</div>
+            <h2 class="chapter-title" data-i18n="ch4_title">அவளுடைய எதிர்காலத்தை ஒருவர் மாற்றி அமைத்தார்</h2>
 
             <div class="story-content text-only-content">
-                <p class="story-p">After losing her father, some relatives thought she could be sent away for household work.</p>
-                <p class="story-p">But Jaya Perima refused.</p>
-                <p class="story-p highlight-text">She believed she deserved an education.</p>
-                <p class="story-p">So she took her to Thaayagam.</p>
+                <p class="story-p" data-i18n="ch4_p1">அப்பாவை இழந்த பிறகு, வீட்டு வேலைக்கு அனுப்பிச்சிரலாம்னு சில சொந்தக்காரங்க நினைச்சாங்க.</p>
+                <p class="story-p" data-i18n="ch4_p2">ஆனா ஜெயா பெரிம்மா அதை ஒத்துக்கவே இல்லை.</p>
+                <p class="story-p highlight-text" data-i18n="ch4_p3">அவ கண்டிப்பா படிக்கணும்னு பெரிம்மா உறுதியா நம்பினாங்க.</p>
+                <p class="story-p" data-i18n="ch4_p4">அதனால அவளை தாயகத்துக்கு கூட்டிட்டு போனாங்க.</p>
             </div>
 
             <div class="road-change-divider">
                 <div class="road-marker-line"></div>
-                <span class="road-marker-text">THE ROAD CHANGED HERE.</span>
+                <span class="road-marker-text" data-i18n="ch4_divider">அவளோட வாழ்க்கைப் பாதை இங்க தான் மாறுச்சு.</span>
                 <div class="road-marker-line"></div>
             </div>
         </section>
@@ -286,32 +294,32 @@
         <!-- CHAPTER 5: THAAYAGAM -->
         <section id="ch-thaayagam" class="chapter-section pos-left mood-thaayagam" data-checkpoint="THAAYAGAM">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 05</div>
-            <h2 class="chapter-title vintage-heading">THAAYAGAM</h2>
+            <div class="chapter-badge" data-i18n="ch5_badge">அத்தியாயம் 05</div>
+            <h2 class="chapter-title vintage-heading" data-i18n="ch5_title">தாயகம்</h2>
 
             <div class="story-content text-only-content">
-                <p class="story-p">Life at Thaayagam was not easy.</p>
-                <p class="story-p">Food was limited. Old clothes felt precious.</p>
-                <p class="story-p">But she studied, learned devotional songs, and found small moments of peace.</p>
-                <p class="story-p font-serif-quote">"She learned to live with less, without letting her dreams become less."</p>
+                <p class="story-p" data-i18n="ch5_p1">தாயகத்துல வாழ்க்கை அவ்வளவு சுலபமா இல்லை.</p>
+                <p class="story-p" data-i18n="ch5_p2">அளவான உணவு. பழைய துணிகள் தான் அங்க பொக்கிஷம்.</p>
+                <p class="story-p" data-i18n="ch5_p3">ஆனாலும் நல்லா படிச்சா, பக்தி பாடல்கள் கத்துக்கிட்டா, சின்ன சின்ன சந்தோஷங்களை அங்க தேடிக்கிட்டா.</p>
+                <p class="story-p font-serif-quote" data-i18n="ch5_quote">"இருக்கிறதை வச்சு வாழ கத்துக்கிட்டா, ஆனா அவளோட கனவுகளை மட்டும் சுருக்கிக்கவே இல்லை."</p>
             </div>
         </section>
 
         <!-- CHAPTER 6: COLLEGE -->
         <section id="ch-college" class="chapter-section pos-right mood-college" data-checkpoint="THE GIRL WHO GREW">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 06</div>
-            <h2 class="chapter-title">THE GIRL WHO GREW</h2>
+            <div class="chapter-badge" data-i18n="ch6_badge">அத்தியாயம் 06</div>
+            <h2 class="chapter-title" data-i18n="ch6_title">வளர்ந்த சிறுமி</h2>
 
             <div class="story-grid">
                 <div class="photo-frame polaroid">
-                    <img id="img-college" src="images/college.jpg" onerror="this.onerror=null; this.src='images/college.svg';" alt="College Days">
-                    <span class="caption">young Amma</span>
+                    <img id="img-college" src="images/college.jpg" onerror="this.onerror=null; this.src='images/college.svg';" alt="கல்லூரி நாட்கள்" data-i18n-alt="ch6_alt">
+                    <span class="caption" data-i18n="ch6_caption">இளமைக்கால மம்மி</span>
                 </div>
                 <div class="story-content">
-                    <p class="story-p">She grew up.</p>
-                    <p class="story-p">She joined college, studied, made friends, and finally experienced a little normal happiness.</p>
-                    <p class="story-p font-serif-quote">"But life had another chapter waiting."</p>
+                    <p class="story-p" data-i18n="ch6_p1">அவ வளர்ந்து பெரியவளானா.</p>
+                    <p class="story-p" data-i18n="ch6_p2">கல்லூரில சேர்ந்து படிச்சா, தோழிகள் கிடைச்சாங்க, கடைசியா சாதாரண சந்தோஷத்தை அனுபவிச்சா.</p>
+                    <p class="story-p font-serif-quote" data-i18n="ch6_quote">"ஆனா வாழ்க்கை அவளுக்காக இன்னொரு அத்தியாயத்தை வைச்சிருந்துச்சு."</p>
                 </div>
             </div>
         </section>
@@ -319,19 +327,19 @@
         <!-- CHAPTER 7: MARRIAGE -->
         <section id="ch-marriage" class="chapter-section pos-left mood-marriage" data-checkpoint="A CHAPTER SHE DIDN'T CHOOSE">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 07</div>
-            <h2 class="chapter-title">A CHAPTER SHE DIDN'T CHOOSE</h2>
+            <div class="chapter-badge" data-i18n="ch7_badge">அத்தியாயம் 07</div>
+            <h2 class="chapter-title" data-i18n="ch7_title">அவள் விரும்பாத ஒரு அத்தியாயம்</h2>
 
             <div class="story-grid">
                 <div class="photo-frame polaroid">
-                    <img id="img-marriage" src="images/marriage.jpg" onerror="this.onerror=null; this.src='images/marriage.svg';" alt="Marriage Day">
-                    <span class="caption">marriage day</span>
+                    <img id="img-marriage" src="images/marriage.jpg" onerror="this.onerror=null; this.src='images/marriage.svg';" alt="திருமண நாள்" data-i18n-alt="ch7_alt">
+                    <span class="caption" data-i18n="ch7_caption">திருமண நாள்</span>
                 </div>
                 <div class="story-content">
-                    <p class="story-p">She and Appa had a 16-year age difference.</p>
-                    <p class="story-p">The marriage happened because of circumstances, not because it was the life she had imagined.</p>
-                    <p class="story-p">The beginning was difficult, with frequent fights and painful moments.</p>
-                    <p class="story-p font-serif-quote">"A new chapter was waiting for her."</p>
+                    <p class="story-p" data-i18n="ch7_p1">அவளுக்கும் அப்பாவுக்கும் 16 வயசு வித்தியாசம்.</p>
+                    <p class="story-p" data-i18n="ch7_p2">சூழ்நிலையால தான் இந்த திருமணம் நடந்துச்சு, அவ நினைச்சு பார்த்த வாழ்க்கை இது இல்லை.</p>
+                    <p class="story-p" data-i18n="ch7_p3">ஆரம்பம் ரொம்பவே கஷ்டமா இருந்துச்சு, அடிக்கடி சண்டைகளும் வலி நிறைந்த தருணங்களும் வந்துச்சு.</p>
+                    <p class="story-p font-serif-quote" data-i18n="ch7_quote">"அவளுக்காக ஒரு புதிய அத்தியாயம் காத்துக்கொண்டிருந்தது."</p>
                 </div>
             </div>
         </section>
@@ -339,18 +347,18 @@
         <!-- CHAPTER 8: FIRST JOB -->
         <section id="ch-job" class="chapter-section pos-right mood-first-job" data-checkpoint="THE TURNING POINT">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 08</div>
-            <h2 class="chapter-title">THE TURNING POINT</h2>
+            <div class="chapter-badge" data-i18n="ch8_badge">அத்தியாயம் 08</div>
+            <h2 class="chapter-title" data-i18n="ch8_title">திருப்புமுனை</h2>
 
             <div class="story-grid">
                 <div class="photo-frame polaroid warm-glow">
-                    <img id="img-first-job" src="images/first-job.jpg" onerror="this.onerror=null; this.src='images/first-job.svg';" alt="First Job Workplace">
-                    <span class="caption">Sirumangalam Government Job</span>
+                    <img id="img-first-job" src="images/first-job.jpg" onerror="this.onerror=null; this.src='images/first-job.svg';" alt="முதல் வேலை இடம்" data-i18n-alt="ch8_alt">
+                    <span class="caption" data-i18n="ch8_caption">சிறுமங்கலம் அரசு வேலை</span>
                 </div>
                 <div class="story-content">
-                    <p class="story-p">At one point, someone questioned how the marriage could work without a job.</p>
-                    <p class="story-p highlight-text">Within the very next month, she got a government job.</p>
-                    <p class="story-p font-serif-quote">Her first posting was at Sirumangalam.</p>
+                    <p class="story-p" data-i18n="ch8_p1">ஒரு கட்டத்துல, வேலை இல்லாம இந்த வாழ்க்கை எப்படி சரியாகும்னு யாரோ கேள்வி கேட்டாங்க.</p>
+                    <p class="story-p highlight-text" data-i18n="ch8_p2">அடுத்த மாசமே அவளுக்கு அரசு வேலை கிடைச்சது.</p>
+                    <p class="story-p font-serif-quote" data-i18n="ch8_quote">அவளோட முதல் வேலை சிறுமங்கலத்துல அமைஞ்சது.</p>
                 </div>
             </div>
         </section>
@@ -359,17 +367,17 @@
         <section id="ch-1999" class="chapter-section pos-left mood-1999" data-checkpoint="1999">
             <div class="checkpoint-glowing-node"></div>
             <div class="year-header">1999</div>
-            <h2 class="chapter-title">She Became a Mother</h2>
+            <h2 class="chapter-title" data-i18n="ch9_title">அவள் தாயானாள்</h2>
 
             <div class="story-grid">
                 <div class="photo-frame polaroid warm-glow">
-                    <img id="img-anna-1999" src="images/anna-1999.jpg" onerror="this.onerror=null; this.src='images/anna-1999.svg';" alt="Anna as a Baby">
-                    <span class="caption">Anna (1999)</span>
+                    <img id="img-anna-1999" src="images/anna-1999.jpg" onerror="this.onerror=null; this.src='images/anna-1999.svg';" alt="குழந்தையாக அண்ணா" data-i18n-alt="ch9_alt">
+                    <span class="caption" data-i18n="ch9_caption">அண்ணா (1999)</span>
                 </div>
                 <div class="story-content">
-                    <p class="story-p">Then, she became a mother.</p>
-                    <p class="story-p">Her first son was born.</p>
-                    <p class="story-p font-serif-quote">A new responsibility. A new reason to keep going.</p>
+                    <p class="story-p" data-i18n="ch9_p1">அப்புறம், அவ ஒரு அம்மாவானாள்.</p>
+                    <p class="story-p" data-i18n="ch9_p2">அவளோட மூத்த மகன் பிறந்தான்.</p>
+                    <p class="story-p font-serif-quote" data-i18n="ch9_quote">ஒரு புதிய பொறுப்பு. வாழ்க்கையில தொடர்ந்து ஓட ஒரு புதிய காரணம்.</p>
                 </div>
             </div>
         </section>
@@ -378,18 +386,18 @@
         <section id="ch-2007" class="chapter-section pos-right mood-2007" data-checkpoint="2007">
             <div class="checkpoint-glowing-node"></div>
             <div class="year-header">2007</div>
-            <h2 class="chapter-title">I Arrived</h2>
+            <h2 class="chapter-title" data-i18n="ch10_title">நான் பிறந்தேன்</h2>
 
             <div class="story-grid">
                 <div class="photo-frame polaroid warm-glow">
-                    <img id="img-me-2007" src="images/me-2007.jpg" onerror="this.onerror=null; this.src='images/me-2007.svg';" alt="Baby Me & Mummy">
-                    <span class="caption">Me (2007)</span>
+                    <img id="img-me-2007" src="images/me-2007.jpg" onerror="this.onerror=null; this.src='images/me-2007.svg';" alt="குழந்தையாக நானும் மம்மியும்" data-i18n-alt="ch10_alt">
+                    <span class="caption" data-i18n="ch10_caption">நான் (2007)</span>
                 </div>
                 <div class="story-content">
-                    <p class="story-p">Eight years later, I arrived.</p>
-                    <p class="story-p">Our little family was complete.</p>
-                    <p class="story-p">Life was simple — small fights, small happiness, and countless ordinary memories.</p>
-                    <p class="story-p font-serif-quote">"Nothing extraordinary. Yet everything meant everything."</p>
+                    <p class="story-p" data-i18n="ch10_p1">எட்டு வருஷம் கழிச்சு, நான் வந்தேன்.</p>
+                    <p class="story-p" data-i18n="ch10_p2">நம்ம சின்ன குடும்பம் முழுமை பெற்றுச்சு.</p>
+                    <p class="story-p" data-i18n="ch10_p3">வாழ்க்கை ரொம்ப எளிமையா போச்சு — சின்ன சின்ன சண்டைகள், சின்ன சந்தோஷங்கள், அப்புறம் நிறைய அழகான நினைவுகள்.</p>
+                    <p class="story-p font-serif-quote" data-i18n="ch10_quote">"பெரிசா எதுவும் இல்லை. ஆனா அது தான் எங்களுக்கு எல்லாமே."</p>
                 </div>
             </div>
         </section>
@@ -397,36 +405,36 @@
         <!-- CHAPTER 11: OUR FAMILY (WOODEN TABLE MEMORY SCENE) -->
         <section id="ch-family" class="chapter-section pos-center mood-family-table" data-checkpoint="THE LIFE SHE BUILT">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 11</div>
-            <h2 class="chapter-title">THE LIFE SHE BUILT</h2>
-            <p class="chapter-subtitle">Memories lying on a table in sunlight</p>
+            <div class="chapter-badge" data-i18n="ch11_badge">அத்தியாயம் 11</div>
+            <h2 class="chapter-title" data-i18n="ch11_title">அவள் உருவாக்கிய வாழ்க்கை</h2>
+            <p class="chapter-subtitle" data-i18n="ch11_sub">சூரிய ஒளியில் மேஜை மேல் சிதறிய நினைவுகள்</p>
 
             <div class="wooden-table-gallery">
                 <div class="table-photo item-1">
                     <div class="photo-frame polaroid">
-                        <img id="img-family1" src="images/family1.jpg" onerror="this.onerror=null; this.src='images/family1.svg';" alt="Little moments">
-                        <span class="caption">little moments</span>
+                        <img id="img-family1" src="images/family1.jpg" onerror="this.onerror=null; this.src='images/family1.svg';" alt="சின்ன சின்ன தருணங்கள்" data-i18n-alt="ch11_item1_alt">
+                        <span class="caption" data-i18n="ch11_item1_cap">சின்ன சின்ன தருணங்கள்</span>
                     </div>
                 </div>
 
                 <div class="table-photo item-2">
                     <div class="photo-frame polaroid">
-                        <img id="img-family2" src="images/family2.jpg" onerror="this.onerror=null; this.src='images/family2.svg';" alt="Our home">
-                        <span class="caption">our home</span>
+                        <img id="img-family2" src="images/family2.jpg" onerror="this.onerror=null; this.src='images/family2.svg';" alt="எங்கள் இல்லம்" data-i18n-alt="ch11_item2_alt">
+                        <span class="caption" data-i18n="ch11_item2_cap">எங்கள் இல்லம்</span>
                     </div>
                 </div>
 
                 <div class="table-photo item-3">
                     <div class="photo-frame polaroid">
-                        <img id="img-family3" src="images/family3.jpg" onerror="this.onerror=null; this.src='images/family3.svg';" alt="Ordinary days">
-                        <span class="caption">ordinary days</span>
+                        <img id="img-family3" src="images/family3.jpg" onerror="this.onerror=null; this.src='images/family3.svg';" alt="சாதாரண நாட்கள்" data-i18n-alt="ch11_item3_alt">
+                        <span class="caption" data-i18n="ch11_item3_cap">சாதாரண நாட்கள்</span>
                     </div>
                 </div>
 
                 <div class="table-photo item-4">
                     <div class="photo-frame polaroid">
-                        <img id="img-family4" src="images/family4.jpg" onerror="this.onerror=null; this.src='images/family4.svg';" alt="Her smile">
-                        <span class="caption">her smile</span>
+                        <img id="img-family4" src="images/family4.jpg" onerror="this.onerror=null; this.src='images/family4.svg';" alt="அவளின் புன்னகை" data-i18n-alt="ch11_item4_alt">
+                        <span class="caption" data-i18n="ch11_item4_cap">அவளின் புன்னகை</span>
                     </div>
                 </div>
             </div>
@@ -436,45 +444,45 @@
         <section id="ch-2016" class="chapter-section pos-left mood-2016" data-checkpoint="2016">
             <div class="checkpoint-glowing-node"></div>
             <div class="year-header dark-header">2016</div>
-            <h2 class="chapter-title">A Difficult Chapter</h2>
+            <h2 class="chapter-title" data-i18n="ch12_title">ஒரு கடினமான அத்தியாயம்</h2>
 
             <div class="story-grid">
                 <div class="photo-frame polaroid dark-frame">
-                    <img id="img-2016" src="images/2016.jpg" onerror="this.onerror=null; this.src='images/2016.svg';" alt="2016 Memory">
-                    <span class="caption">worry & fear</span>
+                    <img id="img-2016" src="images/2016.jpg" onerror="this.onerror=null; this.src='images/2016.svg';" alt="2016 நினைவு" data-i18n-alt="ch12_alt">
+                    <span class="caption" data-i18n="ch12_caption">கவலையும் பயமும்</span>
                 </div>
                 <div class="story-content">
-                    <p class="story-p">My brother faced health problems.</p>
-                    <p class="story-p">Once again, Mummy became deeply worried.</p>
-                    <p class="story-p">The person who had always taken care of everyone was suddenly struggling herself.</p>
-                    <p class="story-p">Our whole family was worried.</p>
+                    <p class="story-p" data-i18n="ch12_p1">என் அண்ணனுக்கு உடம்பு சரியில்லாம போச்சு.</p>
+                    <p class="story-p" data-i18n="ch12_p2">மறுபடியும் மம்மி ரொம்ப கவலைப்பட ஆரம்பிச்சாங்க.</p>
+                    <p class="story-p" data-i18n="ch12_p3">எல்லாரையும் தாங்குன அவங்களே திடீர்னு கஷ்டப்பட ஆரம்பிச்சாங்க.</p>
+                    <p class="story-p" data-i18n="ch12_p4">நம்ம குடும்பமே ரொம்ப கவலையில இருந்துச்சு.</p>
                 </div>
             </div>
 
             <div class="dramatic-fade-to-black">
-                <p class="fade-text">But her story does not end here.</p>
+                <p class="fade-text" data-i18n="ch12_fade">ஆனா அவளோட கதை இதோட முடியல.</p>
             </div>
         </section>
 
         <!-- THE TURNING POINT -->
         <section id="ch-turning" class="chapter-section pos-center mood-pitch-black" data-checkpoint="THE TURNING POINT">
             <div class="turning-point-content">
-                <div class="step-text t-step-1">She carried everyone.</div>
-                <div class="step-text t-step-2">Her family.</div>
-                <div class="step-text t-step-3">Her children.</div>
-                <div class="step-text t-step-4">Her responsibilities.</div>
+                <div class="step-text t-step-1" data-i18n="turn_step1">எல்லாரையும் அவங்க தாங்குனாங்க.</div>
+                <div class="step-text t-step-2" data-i18n="turn_step2">அவங்களோட குடும்பத்தை.</div>
+                <div class="step-text t-step-3" data-i18n="turn_step3">அவங்களோட குழந்தைகளை.</div>
+                <div class="step-text t-step-4" data-i18n="turn_step4">அவங்களோட பொறுப்புகளை.</div>
                 
                 <div class="turning-pivot">
-                    <div class="step-text t-step-5">And now...</div>
-                    <div class="step-text t-step-6 highlight-gold">it's our turn.</div>
+                    <div class="step-text t-step-5" data-i18n="turn_step5">இப்போ...</div>
+                    <div class="step-text t-step-6 highlight-gold" data-i18n="turn_step6">எங்களோட முறை.</div>
                 </div>
 
                 <div class="children-stand-block hidden" id="childrenStandBlock">
                     <div class="photo-frame polaroid warm-glow center-frame">
-                        <img id="img-children" src="images/children.jpg" onerror="this.onerror=null; this.src='images/children.svg';" alt="Children Standing Beside Her">
-                        <span class="caption">beside her always</span>
+                        <img id="img-children" src="images/children.jpg" onerror="this.onerror=null; this.src='images/children.svg';" alt="அவளுடன் நிற்கும் பிள்ளைகள்" data-i18n-alt="turn_alt">
+                        <span class="caption" data-i18n="turn_cap">என்றும் அவளுடன்</span>
                     </div>
-                    <p class="children-quote">"The children she spent her life worrying about are here to stand beside her."</p>
+                    <p class="children-quote" data-i18n="turn_quote">"வாழ்க்கை முழுக்க கவலைப்பட்டு வளர்த்த பிள்ளைகள், இப்போ அவங்களோட துணை நிற்க வராங்க."</p>
                 </div>
             </div>
         </section>
@@ -482,19 +490,19 @@
         <!-- CHAPTER 13: TODAY -->
         <section id="ch-today" class="chapter-section pos-right mood-today" data-checkpoint="TODAY">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">CHAPTER 13</div>
-            <h2 class="chapter-title">TODAY</h2>
+            <div class="chapter-badge" data-i18n="ch13_badge">அத்தியாயம் 13</div>
+            <h2 class="chapter-title" data-i18n="ch13_title">இன்று</h2>
 
             <div class="story-grid hero-today-grid">
                 <div class="photo-frame polaroid golden-border">
-                    <img id="img-today" src="images/today.jpg" onerror="this.onerror=null; this.src='images/today.svg';" alt="Mummy Today">
-                    <span class="caption">Mummy today</span>
+                    <img id="img-today" src="images/today.jpg" onerror="this.onerror=null; this.src='images/today.svg';" alt="மம்மி இன்று" data-i18n-alt="ch13_alt">
+                    <span class="caption" data-i18n="ch13_caption">மம்மி இன்று</span>
                 </div>
                 <div class="story-content letter-format">
-                    <p class="letter-salutation">Mummy,</p>
-                    <p class="story-p">You have already been strong for longer than anyone knows.</p>
-                    <p class="story-p">You don't have to carry everything alone anymore.</p>
-                    <p class="story-p font-serif-quote">You have us.</p>
+                    <p class="letter-salutation" data-i18n="ch13_salutation">மம்மி,</p>
+                    <p class="story-p" data-i18n="ch13_p1">யாருக்கும் தெரியாத அளவுக்கு நீங்க ஏற்கனவே ரொம்ப வருஷமா தைரியமா இருந்துட்டீங்க.</p>
+                    <p class="story-p" data-i18n="ch13_p2">இனிமே எல்லாத்தையும் நீங்க தனியா சுமக்க வேண்டாம்.</p>
+                    <p class="story-p font-serif-quote" data-i18n="ch13_quote">உங்களுக்கு நாங்க இருக்கோம்.</p>
                 </div>
             </div>
         </section>
@@ -502,17 +510,17 @@
         <!-- FINAL CHAPTER: HER TOMORROW -->
         <section id="ch-tomorrow" class="chapter-section pos-center mood-tomorrow" data-checkpoint="HER TOMORROW">
             <div class="checkpoint-glowing-node"></div>
-            <div class="chapter-badge">FINAL CHAPTER</div>
-            <h2 class="chapter-title sunrise-heading">HER TOMORROW</h2>
+            <div class="chapter-badge" data-i18n="ch14_badge">கடைசி அத்தியாயம்</div>
+            <h2 class="chapter-title sunrise-heading" data-i18n="ch14_title">அவளின் நாளை</h2>
 
             <div class="tomorrow-content">
-                <p class="story-p">You spent so many years making sure we were okay.</p>
-                <p class="story-p">Now it's our turn to walk beside you.</p>
-                <p class="story-p highlight-gold-lg">Whatever comes next, we'll face it together.</p>
+                <p class="story-p" data-i18n="ch14_p1">நாங்க நல்லா இருக்கணும்னு எவ்வளவோ வருஷம் உழைச்சீங்க.</p>
+                <p class="story-p" data-i18n="ch14_p2">இப்போ நாங்க உங்க கூடவே நடந்து வர போறோம்.</p>
+                <p class="story-p highlight-gold-lg" data-i18n="ch14_p3">அடுத்து என்ன வந்தாலும், நாம ஒன்னா சேர்ந்தே எதிர்கொள்வோம்.</p>
                 
                 <div class="future-text-block">
-                    <p class="future-line">Your story is not ending here.</p>
-                    <p class="future-line-highlight">This is only the beginning.</p>
+                    <p class="future-line" data-i18n="ch14_line1">உங்க கதை இதோட முடியல.</p>
+                    <p class="future-line-highlight" data-i18n="ch14_line2">இது ஒரு புதிய ஆரம்பம் தான்.</p>
                 </div>
             </div>
         </section>
@@ -520,28 +528,28 @@
         <!-- FINAL BIRTHDAY REVEAL -->
         <section id="ch-reveal" class="chapter-section final-reveal-section" data-checkpoint="HAPPY BIRTHDAY">
             <div class="hero-photo-wrapper">
-                <img id="img-final" class="cinematic-zoom-img" src="images/final.jpg" onerror="this.onerror=null; this.src='images/final.svg';" alt="Happy Birthday Mummy">
+                <img id="img-final" class="cinematic-zoom-img" src="images/final.jpg" onerror="this.onerror=null; this.src='images/final.svg';" alt="இனிய பிறந்தநாள் வாழ்த்துக்கள் மம்மி" data-i18n-alt="reveal_alt">
                 <div class="overlay-gradient"></div>
             </div>
 
             <div class="reveal-content-box">
                 <div class="reveal-poem">
-                    <p>Before you were our Mummy,</p>
-                    <p>you were a little girl who survived so much.</p>
-                    <p class="poem-spacer">You grew.</p>
-                    <p>You kept going.</p>
-                    <p>You built a family.</p>
-                    <p>You became our Mummy.</p>
+                    <p data-i18n="poem_line1">நீங்க எங்களுக்கு மம்மியா ஆகுறதுக்கு முன்னாடி,</p>
+                    <p data-i18n="poem_line2">எவ்வளவோ கஷ்டங்களை தாங்கி ஜெயிச்ச ஒரு சின்னப் பொண்ணு.</p>
+                    <p class="poem-spacer" data-i18n="poem_line3">வளர்ந்தீங்க.</p>
+                    <p data-i18n="poem_line4">தொடர்ந்து ஓடினீங்க.</p>
+                    <p data-i18n="poem_line5">ஒரு அழகான குடும்பத்தை உருவாக்கினீங்க.</p>
+                    <p data-i18n="poem_line6">எங்களுக்கு மம்மியா ஆனீங்க.</p>
                 </div>
 
                 <div class="final-love-message">
-                    <h1 class="love-title">HAPPY BIRTHDAY, MUMMY ❤️</h1>
-                    <p class="from-children">Thank you for everything.</p>
-                    <p class="final-thankyou">"Your future is still waiting for you.<br>We'll walk with you."</p>
+                    <h1 class="love-title" data-i18n="reveal_love_title">இனிய பிறந்தநாள் வாழ்த்துக்கள், மம்மி ❤️</h1>
+                    <p class="from-children" data-i18n="reveal_love_from">எல்லாத்துக்கும் ரொம்ப நன்றி.</p>
+                    <p class="final-thankyou" data-i18n="reveal_quote">"உங்க எதிர்காலம் உங்களுக்காக காத்துக்கிட்டு இருக்கு.<br>நாம சேர்ந்து நடப்போம்."</p>
                 </div>
 
                 <button id="restartBtn" class="restart-journey-btn">
-                    <span>Walk through her journey again ↺</span>
+                    <span data-i18n="restart_btn">அவளின் பயணத்தை மீண்டும் பார்க்க ↺</span>
                 </button>
             </div>
         </section>

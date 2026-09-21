@@ -271,6 +271,7 @@ body {
     text-align: center;
     color: var(--color-cream-text);
     padding: 20px;
+    overflow-y: auto;
     transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1), opacity 1.2s ease;
 }
 
@@ -281,10 +282,13 @@ body {
 }
 
 .opening-content {
-    max-width: 700px;
+    max-width: 720px;
+    width: 100%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 16px 0;
 }
 
 .glowing-dot {
@@ -293,7 +297,7 @@ body {
     background-color: var(--color-gold-accent);
     border-radius: 50%;
     box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.8);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     animation: pulseDot 3s infinite ease-in-out;
 }
 
@@ -303,7 +307,7 @@ body {
 }
 
 .intro-sequence {
-    min-height: 160px;
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -327,7 +331,7 @@ body {
 }
 
 .title-reveal {
-    margin-top: 30px;
+    margin-top: 20px;
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;
@@ -353,7 +357,7 @@ body {
     font-size: 1.35rem;
     font-style: italic;
     color: var(--color-muted-text);
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     line-height: 1.5;
 }
 
@@ -484,9 +488,9 @@ body {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1240px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 120px 24px 200px 95px;
+    padding: 120px 30px 200px 210px;
     display: flex;
     flex-direction: column;
 }
@@ -520,18 +524,18 @@ body {
 .chapter-section.pos-left {
     align-self: flex-start;
     max-width: 580px;
-    margin-left: 15px;
+    margin-left: 0;
 }
 
 .chapter-section.pos-right {
     align-self: flex-end;
     max-width: 580px;
-    margin-right: 15px;
+    margin-right: 0;
 }
 
 .chapter-section.pos-center {
     align-self: center;
-    max-width: 840px;
+    max-width: 820px;
 }
 
 /* Checkpoint Glowing Node on Card */
@@ -1076,6 +1080,10 @@ body {
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 900px) {
+    .main-container {
+        padding: 90px 16px 140px 16px;
+    }
+
     .chapter-section,
     .chapter-section.pos-left,
     .chapter-section.pos-right,
@@ -1104,10 +1112,11 @@ body {
     .checkpoint-nav {
         left: 6px;
         padding: 6px 4px;
+        z-index: 100;
     }
 
     .checkpoint-nav .label {
-        display: none;
+        display: none !important;
     }
 
     .year-header {
@@ -1119,3 +1128,253 @@ body {
         letter-spacing: 2px;
     }
 }
+
+/* ==========================================================================
+   LANGUAGE TOGGLE & TAMIL TYPOGRAPHY
+   ========================================================================== */
+
+/* Language Control Button */
+.lang-control-wrapper {
+    position: fixed;
+    top: 24px;
+    right: 185px;
+    z-index: 1000;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(26, 22, 20, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: var(--color-gold-warm);
+    padding: 10px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition-medium);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.lang-btn:hover {
+    background: rgba(212, 175, 55, 0.25);
+    border-color: var(--color-gold-bright);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   TAMIL LANGUAGE-AWARE TYPOGRAPHY & OVERFLOW PREVENTION
+   ========================================================================== */
+
+body.lang-ta {
+    font-family: 'Noto Sans Tamil', var(--font-sans);
+    line-height: 1.85;
+}
+
+/* Opening Screen / Hero Section Sizing */
+body.lang-ta .glowing-dot {
+    margin-bottom: 20px;
+}
+
+body.lang-ta .intro-sequence {
+    min-height: 120px;
+}
+
+body.lang-ta .intro-text {
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    line-height: 1.6;
+    margin-bottom: 8px;
+    letter-spacing: 0;
+    font-style: normal;
+}
+
+body.lang-ta .title-reveal {
+    margin-top: 16px;
+}
+
+body.lang-ta .main-title {
+    font-family: 'Noto Sans Tamil', var(--font-serif);
+    font-size: clamp(2rem, 5.5vw, 2.8rem);
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+body.lang-ta .main-subtitle {
+    font-family: 'Noto Sans Tamil', var(--font-serif-sub);
+    font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+    line-height: 1.65;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+    font-style: normal;
+}
+
+body.lang-ta .begin-btn {
+    font-family: 'Noto Sans Tamil', var(--font-sans);
+    font-size: clamp(0.85rem, 2vw, 0.92rem);
+    letter-spacing: 0.5px;
+    padding: 12px 28px;
+}
+
+/* Chapter Badges & Headings */
+body.lang-ta .chapter-badge {
+    font-family: 'Noto Sans Tamil', var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+body.lang-ta .chapter-title {
+    font-family: 'Noto Sans Tamil', var(--font-serif);
+    font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+    line-height: 1.35;
+    letter-spacing: 0;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+body.lang-ta .chapter-subtitle {
+    font-family: 'Noto Sans Tamil', var(--font-serif-sub);
+    font-size: 1.0rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+body.lang-ta .vintage-heading,
+body.lang-ta .sunrise-heading {
+    font-family: 'Noto Sans Tamil', var(--font-serif);
+    font-size: clamp(1.5rem, 4vw, 2.0rem);
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+body.lang-ta .year-header {
+    font-size: clamp(2.8rem, 6vw, 3.8rem);
+    letter-spacing: 1px;
+}
+
+/* Paragraphs & Quotes */
+body.lang-ta .story-p {
+    font-size: clamp(0.92rem, 2vw, 1.0rem);
+    line-height: 1.85;
+    margin-bottom: 16px;
+}
+
+body.lang-ta .highlight-text,
+body.lang-ta .highlight-gold {
+    line-height: 1.8;
+}
+
+body.lang-ta .font-serif-quote,
+body.lang-ta .story-p.font-serif-quote {
+    font-family: 'Noto Sans Tamil', var(--font-serif-sub);
+    font-size: clamp(1.0rem, 2.4vw, 1.12rem);
+    line-height: 1.75;
+    letter-spacing: 0;
+    font-style: normal;
+}
+
+body.lang-ta .caption {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+body.lang-ta .road-marker-text {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* Turning Point & Interactive Sections */
+body.lang-ta .step-text {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    line-height: 1.5;
+}
+
+body.lang-ta .children-quote {
+    font-family: 'Noto Sans Tamil', var(--font-serif-sub);
+    font-size: clamp(1.0rem, 2.2vw, 1.12rem);
+    line-height: 1.7;
+    font-style: normal;
+}
+
+body.lang-ta .letter-salutation {
+    font-size: 1.35rem;
+}
+
+body.lang-ta .future-line,
+body.lang-ta .future-line-highlight {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    line-height: 1.6;
+}
+
+/* Final Birthday Reveal Section */
+body.lang-ta .reveal-poem {
+    font-family: 'Noto Sans Tamil', var(--font-serif-sub);
+    font-size: clamp(1.05rem, 2.5vw, 1.22rem);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-style: normal;
+}
+
+body.lang-ta .love-title {
+    font-family: 'Noto Sans Tamil', var(--font-serif);
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+body.lang-ta .from-children {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+body.lang-ta .final-thankyou {
+    font-family: 'Noto Sans Tamil', var(--font-serif-sub);
+    font-size: clamp(1.05rem, 2.2vw, 1.18rem);
+    line-height: 1.7;
+    font-style: normal;
+}
+
+body.lang-ta .restart-journey-btn {
+    font-family: 'Noto Sans Tamil', var(--font-sans);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 14px 28px;
+}
+
+/* Sidebar & Buttons */
+body.lang-ta .nav-title {
+    font-family: 'Noto Sans Tamil', var(--font-serif);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+body.lang-ta .nav-item .label {
+    font-size: 0.72rem;
+    letter-spacing: 0;
+}
+
+body.lang-ta .lang-btn,
+body.lang-ta .audio-btn,
+body.lang-ta .customizer-btn {
+    font-family: 'Noto Sans Tamil', var(--font-sans);
+    font-size: 0.82rem;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+    .lang-control-wrapper {
+        top: 70px;
+        right: 24px;
+    }
+}
+
