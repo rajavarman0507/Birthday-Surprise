@@ -484,9 +484,9 @@ body {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 120px 24px 200px 24px;
+    padding: 120px 24px 200px 95px;
     display: flex;
     flex-direction: column;
 }
@@ -519,19 +519,19 @@ body {
 /* Winding Zig-Zag Positional Layout */
 .chapter-section.pos-left {
     align-self: flex-start;
-    max-width: 620px;
-    margin-left: 2%;
+    max-width: 580px;
+    margin-left: 15px;
 }
 
 .chapter-section.pos-right {
     align-self: flex-end;
-    max-width: 620px;
-    margin-right: 2%;
+    max-width: 580px;
+    margin-right: 15px;
 }
 
 .chapter-section.pos-center {
     align-self: center;
-    max-width: 880px;
+    max-width: 840px;
 }
 
 /* Checkpoint Glowing Node on Card */
